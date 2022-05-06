@@ -1,8 +1,21 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
+import { MqttModule, IMqttServiceOptions } from "ngx-mqtt"
 import { SvgComponent } from './svg/svg.component';
+// export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+//   hostname: 'localhost',
+//   port: 9001,
+//   path: '/mqtt'
+// }
+
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  connectOnCreate: false,
+  hostname: 'localhost',
+  port: 1883,
+  path: '/mqtt'
+};
 
 @NgModule({
   declarations: [
@@ -10,7 +23,9 @@ import { SvgComponent } from './svg/svg.component';
     SvgComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS)
   ],
   providers: [],
   bootstrap: [AppComponent]

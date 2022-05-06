@@ -9,6 +9,7 @@ app-svg {
   flex-grow: 2;
 }
 
+
 .flex-row {
   display: flex;
   direction: column;
